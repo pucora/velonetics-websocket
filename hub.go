@@ -399,7 +399,7 @@ func (h *Hub) handleClient(ctx context.Context, s *ClientSession, endpointURL st
 
 	if h.cfg.DisconnectEvent {
 		env := NewOutboundEnvelope(endpointURL, s.session, nil)
-		_ = h.sendToBackend(ctx, s, env)
+		_ = h.sendToBackend(h.lifecycleCtx, s, env)
 	}
 }
 
